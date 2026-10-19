@@ -1,1 +1,1 @@
-cucu // alteração da branch halloween
+cucu // alteração da branch halloween // forcei um conflito
