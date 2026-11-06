@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação — Perfil de Tecnologia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+    body { overflow: hidden; background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); color: #fff; }
+    .slide { width: 100vw; height: 100vh; display: none; padding: 3rem; flex-direction: column; justify-content: center; animation: fadeIn 0.5s ease; }
+    .slide.active { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    h1 { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(90deg, #00d9ff, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #00d9ff; }
+    p, li { font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin-bottom: 0.8rem; }
+    ul { list-style: none; padding-left: 0; }
+    li::before { content: "▹ "; color: #a855f7; font-weight: bold; }
+    .highlight { color: #fcd34d; font-weight: 600; }
+    .nav { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 1rem; background: rgba(0,0,0,0.4); padding: 0.8rem 1.5rem; border-radius: 50px; backdrop-filter: blur(10px); z-index: 100; }
+    button { padding: 0.6rem 1.2rem; border: none; border-radius: 8px; background: linear-gradient(90deg, #00d9ff, #a855f7); color: #000; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
+    button:hover { transform: scale(1.05); }
+    .dots { display: flex; gap: 0.5rem; align-items: center; margin-left: 1rem; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+    .dot.active { background: #00d9ff; box-shadow: 0 0 8px #00d9ff; }
+    .badge { display: inline-block; background: rgba(168, 85, 247, 0.3); padding: 0.3rem 0.8rem; border-radius: 20px; margin: 0.25rem; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Slide 1 — Início -->
+  <div class="slide active" id="s1">
+    <h1>Olá, sou alguém como tu! 👋</h1>
+    <h2>Estudante de Tecnologia • Porto 🇵🇹</h2>
+    <p>Apaixonado por sistemas, organização e transformar ideias em projetos reais.</p>
+    <p class="highlight">Aqui está o meu percurso, competências e objetivos.</p>
+  </div>
+
+  <!-- Slide 2 — Competências Técnicas -->
+  <div class="slide" id="s2">
+    <h2>💻 Competências Técnicas</h2>
+    <ul>
+      <li><strong>Bancos de Dados:</strong> Design, modelagem, estrutura e relacionamentos</li>
+      <li><strong>Fluxogramas & Diagramas:</strong> Planejamento de processos e lógica de sistemas</li>
+      <li><strong>Sistemas:</strong> Máquinas virtuais, configuração e ambientes de trabalho</li>
+      <li><strong>Ferramentas:</strong> HTML/CSS, JavaScript, plataformas de ensino (Moodle)</li>
+      <li><strong>Idiomas:</strong> <span class="badge">Português — Nativo</span> <span class="badge">Inglês — Técnico/Académico</span></li>
+    </ul>
+  </div>
+
+  <!-- Slide 3 — Trabalho & Colaboração -->
+  <div class="slide" id="s3">
+    <h2>🤝 Colaboração & Estilo de Trabalho</h2>
+    <ul>
+      <li>Trabalho bem em equipa — troca de ideias e apoio mútuo faz a diferença</li>
+      <li>Valido sempre os trabalhos com colegas antes de entregar</li>
+      <li>Uso ferramentas digitais para organizar tarefas e manter o ritmo</li>
+      <li>Busco clareza e soluções práticas, especialmente quando as coisas ficam confusas</li>
+      <li>Transformo desafios em oportunidades de aprender mais 💡</li>
+    </ul>
+  </div>
+
+  <!-- Slide 4 — Objetivos -->
+  <div class="slide" id="s4">
+    <h2>🎯 Objetivos</h2>
+    <ul>
+      <li>✅ Avançar com sucesso nas avaliações e projetos da formação</li>
+      <li>✅ Consolidar conhecimentos em bases de dados e lógica de sistemas</li>
+      <li>✅ Conquistar um estágio na área de Tecnologias de Informação</li>
+      <li>✅ Criar projetos que demonstrem o que realmente sei fazer</li>
+      <li class="highlight">✅ Crescer, aprender e contribuir de forma positiva!</li>
+    </ul>
+  </div>
+
+  <!-- Slide 5 — Encerramento -->
+  <div class="slide" id="s5">
+    <h1>Obrigado! 🚀</h1>
+    <h2>Vamos construir o futuro juntos</h2>
+    <p>Estou pronto para aprender, colaborar e evoluir.</p>
+    <p style="margin-top: 2rem; font-size: 1rem; opacity: 0.8;">Apresentação criada especialmente para ti — Porto, 2026</p>
+  </div>
+
+  <!-- Navegação -->
+  <div class="nav">
+    <button id="prev">◀ Anterior</button>
+    <div class="dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+      <span class="dot" data-slide="4"></span>
+    </div>
+    <button id="next">Próxima ▶</button>
+  </div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+      dots[i].classList.toggle('active', i === index);
+    });
+    current = index;
+  }
+
+  document.getElementById('next').addEventListener('click', () => {
+    showSlide((current + 1) % slides.length);
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    showSlide((current - 1 + slides.length) % slides.length);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => showSlide(i));
+  });
+
+  // Navegação por teclado
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') showSlide((current + 1) % slides.length);
+    if (e.key === 'ArrowLeft') showSlide((current - 1 + slides.length) % slides.length);
+  });
+</script>
+</body>
+</html>
